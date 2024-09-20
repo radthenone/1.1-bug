@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../auth/auth.guard';
 import { CarsComponent } from './cars.component';
 import { AddCarComponent } from './add-car/add-car.component';
-import { AddCarPartComponent } from './add-car-part/add-car-part.component';
 
 const carsRoutes: Routes = [
   {
@@ -14,11 +13,6 @@ const carsRoutes: Routes = [
       {
         path: 'add-car',
         component: AddCarComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: 'add-car-part',
-        component: AddCarPartComponent,
         canActivate: [AuthGuard],
       },
     ],
