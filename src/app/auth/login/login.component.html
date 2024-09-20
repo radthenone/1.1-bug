@@ -1,16 +1,23 @@
 <p>login works!</p>
-<div>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" formControlName="email">
+<div class="flex-row">
+    <div class="card">
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" formControlName="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" formControlName="password">
+                </div>
+                <div class="form-group form-button">
+                    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" formControlName="password">
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>
-        </div>
-    </form>
+    </div>
+    <div class="text-center mt-3">
+        <p>If you don't have an account, please <a routerLink="../../auth/register">register</a>.</p>
+    </div>
 </div>
