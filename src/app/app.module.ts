@@ -8,7 +8,11 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UsersComponent } from './users/users.component';
 import { LogoutComponent } from './auth/logout/logout.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlertsComponent } from './alerts/alerts.component';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,15 +21,14 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     RegisterComponent,
     LoginComponent,
     UsersComponent,
-    LogoutComponent
+    LogoutComponent,
+    AlertsComponent,
+    HomeComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
