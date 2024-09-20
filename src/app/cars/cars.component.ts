@@ -19,8 +19,8 @@ export class CarsComponent implements OnInit {
     });
   }
 
-  deleteCar(id: number): void {
-    this.carsService.deleteCar(id);
+  deleteCar(carName: string): void {
+    this.carsService.deleteCar(carName);
     this.carsService.getCars().subscribe((cars) => {
       this.cars = cars;
     });

@@ -50,8 +50,10 @@ export class CarsService {
     localStorage.setItem('cars', JSON.stringify(cars));
   }
 
-  deleteCar(id: number): void {
-    const updatedCars = this.carsSubject.value.filter((car) => car.id !== id);
+  deleteCar(carName: string): void {
+    const updatedCars = this.carsSubject.value.filter(
+      (car) => car.name !== carName,
+    );
     this.carsSubject.next(updatedCars);
     this.saveCars(updatedCars);
   }

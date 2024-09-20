@@ -30,9 +30,11 @@
                     <button type="button" class="btn btn-danger mt-2" (click)="removePart(i)">Remove Part</button>
                 </div>
             </div>
+            <div>
+                <button type="button" class="btn btn-secondary m-1" (click)="addPart()">Add Part</button>
+                <button type="submit" class="btn btn-primary" [disabled]="carForm.invalid">Add Car</button>
+            </div>
 
-            <button type="button" class="btn btn-secondary mb-3" (click)="addPart()">Add Part</button>
-            <button type="submit" class="btn btn-primary" [disabled]="carForm.invalid">Add Car</button>
         </form>
     </div>
 </div>

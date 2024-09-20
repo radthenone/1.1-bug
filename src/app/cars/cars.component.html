@@ -10,18 +10,16 @@
     </tr>
     </thead>
     <tbody>
-    <ng-container *ngFor="let car of cars">
-        <tr *ngIf="car.id !== undefined">
-            <th scope="row">{{ car.id }}</th>
-            <td>{{ getPartsNames(car.parts).join(', ') }}</td>
-            <td>{{ getTotalPartsCost(car.parts) }}</td>
-            <td>
-                <button (click)="deleteCar(car.id)" class="btn btn-danger">
-                    Delete
-                </button>
-            </td>
-        </tr>
-    </ng-container>
+    <tr *ngFor="let car of cars; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ car.name }}</td>
+        <td>{{ car.parts ? getPartsNames(car.parts).join(', ') : '' }}</td>
+        <td>{{ car.parts ? getTotalPartsCost(car.parts) : 0 }}</td>
+        <td>
+            <button *ngIf="car.name" (click)="deleteCar(car.name)" class="btn btn-danger">
+                Delete
+            </button>
+        </td>
     </tbody>
 </table>
 <a routerLink="add-car" class="btn btn-primary">Add Car</a>
