@@ -1,0 +1,28 @@
+<h1>Cars</h1>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Model</th>
+        <th scope="col">Parts</th>
+        <th scope="col">Total Cost</th>
+        <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let car of cars">
+        <tr *ngIf="car.id !== undefined">
+            <th scope="row">{{ car.id }}</th>
+            <td>{{ getPartsNames(car.parts).join(', ') }}</td>
+            <td>{{ getTotalPartsCost(car.parts) }}</td>
+            <td>
+                <button (click)="deleteCar(car.id)" class="btn btn-danger">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </ng-container>
+    </tbody>
+</table>
+<a routerLink="add-car" class="btn btn-primary">Add Car</a>
+<router-outlet></router-outlet>

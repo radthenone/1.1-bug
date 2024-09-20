@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Add Car</h2>
+        <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label for="name" class="form-label">Car Name</label>
+                <input id="name" formControlName="name" class="form-control"/>
+                <div *ngIf="field.name.invalid && (field.name.touched || field.name.dirty)" class="text-danger">
+                    <small>Car name is required.</small>
+                </div>
+            </div>
+
+            <h3 class="card-subtitle mb-2">Parts</h3>
+            <div formArrayName="parts">
+                <div *ngFor="let part of parts.controls; let i = index" [formGroupName]="i" class="mb-3">
+                    <label for="partName" class="form-label">Part Name</label>
+                    <input id="partName" formControlName="name" class="form-control"/>
+                    <div *ngIf="part.get('name')?.invalid && (part.get('name')?.touched || part.get('name')?.dirty)"
+                         class="text-danger">
+                        <small>Part name is required.</small>
+                    </div>
+
+                    <label for="partPrice" class="form-label">Part Price</label>
+                    <input id="partPrice" formControlName="price" type="number" class="form-control"/>
+                    <div *ngIf="part.get('price')?.invalid && (part.get('price')?.touched || part.get('price')?.dirty)"
+                         class="text-danger">
+                        <small>Price must be a positive number.</small>
+                    </div>
+
+                    <button type="button" class="btn btn-danger mt-2" (click)="removePart(i)">Remove Part</button>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-secondary mb-3" (click)="addPart()">Add Part</button>
+            <button type="submit" class="btn btn-primary" [disabled]="carForm.invalid">Add Car</button>
+        </form>
+    </div>
+</div>
