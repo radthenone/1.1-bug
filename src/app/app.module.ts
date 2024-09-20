@@ -13,6 +13,9 @@ import { AlertsComponent } from './alerts/alerts.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { CarsComponent } from './cars/cars.component';
+import { AddCarComponent } from './cars/add-car/add-car.component';
+import { AddCarPartComponent } from './cars/add-car-part/add-car-part.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { HomeComponent } from './home/home.component';
     LogoutComponent,
     AlertsComponent,
     HomeComponent,
+    CarsComponent,
+    AddCarComponent,
+    AddCarPartComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [
